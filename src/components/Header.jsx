@@ -1,7 +1,13 @@
 import React from "react";
 
 const Header = () => {
-	return <div></div>;
+	return (
+		<header>
+			<h1>
+				Stickiez | <em>Inspired by Google</em>
+			</h1>
+		</header>
+	);
 };
 
 export default Header;

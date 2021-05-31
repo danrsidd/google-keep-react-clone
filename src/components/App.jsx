@@ -30,6 +30,7 @@ const App = () => {
 					<Note
 						key={noteObj.id}
 						id={noteObj.id}
+						title={noteObj.title}
 						content={noteObj.content}
 						onDelete={deleteNote}
 					/>

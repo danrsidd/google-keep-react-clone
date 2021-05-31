@@ -9,14 +9,18 @@ const Form = (props) => {
 		content: "",
 	});
 
+	const [expandedStatus, setExpandedStatus] = useState(false);
+
+	const expand = () => setExpandedStatus(true);
+
 	const noteInputChange = (e) => {
-		const { value } = e.target;
+		const { name, value } = e.target;
 		setNote((prevNote) => {
 			return {
 				...prevNote,
 				// random id generator
 				id: uuidv4(),
-				content: value,
+				[name]: value,
 			};
 		});
 	};
@@ -28,6 +32,7 @@ const Form = (props) => {
 		// Clear input after submission
 		setNote({
 			id: "",
+			title: "",
 			content: "",
 		});
 	};
@@ -35,12 +40,21 @@ const Form = (props) => {
 	return (
 		<div>
 			<form className="create-note">
+				{expandedStatus && (
+					<input
+						name="title"
+						onChange={noteInputChange}
+						value={note.title}
+						placeholder="Note Title"
+					/>
+				)}
 				<textarea
 					name="content"
 					onChange={noteInputChange}
+					onClick={expand}
 					value={note.content}
 					placeholder="Type your note here..."
-					rows="3"
+					rows={expandedStatus ? 3 : 1}
 				/>
 
 				<Fab onClick={addNote}>

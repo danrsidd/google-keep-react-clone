@@ -1,7 +1,14 @@
 import React from "react";
 
 const Footer = () => {
-	return <div></div>;
+	const currentYear = new Date().getFullYear();
+	return (
+		<footer>
+			<p>
+				© {currentYear} | <em>Inspired by Google</em>
+			</p>
+		</footer>
+	);
 };
 
 export default Footer;

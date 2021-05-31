@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
@@ -6,6 +6,20 @@ import Form from "./Form";
 
 const App = () => {
 	const [notesCollection, setNotesCollection] = useState([]);
+
+	// Save to browser local storage
+
+	useEffect(() => {
+		const browserNotes = localStorage.getItem("browser-notes-collection");
+		if (browserNotes) setNotesCollection(JSON.parse(browserNotes));
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(
+			"browser-notes-collection",
+			JSON.stringify(notesCollection)
+		);
+	});
 
 	const addNote = (noteObj) => {
 		setNotesCollection((prevNotesCollection) => {
@@ -16,7 +30,7 @@ const App = () => {
 	const deleteNote = (id) => {
 		setNotesCollection((prevNotesCollection) => {
 			return prevNotesCollection.filter((prevNoteObj) => {
-				return prevNoteObj.id != id;
+				return prevNoteObj.id !== id;
 			});
 		});
 	};

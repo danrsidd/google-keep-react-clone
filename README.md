@@ -1,6 +1,6 @@
 # Stickiez: A Google Keep React Clone
 
-## Link(s)
+## Link(s) 
 
 Project Link: [github.com/danrsidd/google-keep-react-clone](https://github.com/danrsidd/google-keep-react-clone)\
 Visit the Website: [danyal.io/google-keep-react-clone](https://danyal.io/google-keep-react-clone/)
